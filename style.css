@@ -1,0 +1,360 @@
+:root {
+    --input-height: 50px;
+    --icon-padding: 20px;
+} 
+
+* {
+    margin : 0;
+    padding :0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+
+.top-bar {
+    height : 70px;
+    position : absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 2vw;
+    font-size: small;
+}
+
+.top-bar a {
+    color: #42433c;
+    margin: 10px;
+}
+
+/* GOOGLE APPS */
+.apps {
+    height: 4vh;
+    width: 4vh;
+    opacity: 0.7;
+    margin: 10px;
+}
+
+.profile {
+    border-radius: 50%;
+    height: 6vh;
+    width: 6vh;
+    background-color: #333;
+    margin : 0px 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    width : 47.5vw;
+}
+
+.main-logo {
+    width: 100%;
+    padding: 0 20% 5vh;
+}
+
+.search-input input {
+    width: 100%;
+    height: var(--input-height);
+    border-radius: calc(var(--input-height) / 2);
+    padding: 0 var(--input-height);
+    border: 1px solid #dfe1e5;
+    font-size: 16px;
+}
+
+.search-input input:focus,
+.search-input input:hover {
+    outline: none;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.search-input {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top : 25%;
+    opacity : 0.35;
+}
+
+.mic-icon {
+    right: var(--icon-padding)
+}
+
+.search-icon {
+    left: var(--icon-padding);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button {
+    color : #f2f2f2;
+    background-color: #043688;
+    padding: 10px 15px;
+    border: none;
+    margin: 5vh 1vh 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.buttons button:hover {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    box-shadow: 0, 0.5, 3px, rgba(0, 0, 0, 0.05);
+}
+
+form p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.bottom-bar {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #f2f2f2c2;
+    border-top: 1px solid #6f6f6f;
+    font-size: small;
+    bottom: 0;
+    text-justify: distribute;
+}
+
+/* BOTTOM BAR*/
+.bottom-bar a {
+    color: #6f6f6f;
+    margin: 10px;
+    display:inline-flex; 
+}
+
+.right-bar {
+    margin-left: auto;
+}
+
+.left-bar {
+    margin-right: auto;
+}
+
+
+/* GOOGLE APPS POP UP */
+.apps-popup {
+    position: absolute;
+    width: 300px;
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid #42433c;
+    top: 10%;
+    right: 2%;
+    background-color: rgba(255,255,255,1);
+    text-align: center;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0);
+    font-size: small;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .1s, visibility 0s linear .1s;
+}
+
+.apps-popup a {
+    display: inline-block;
+    inline-size: 30%;
+    padding: 10px;
+    color: #42433c;
+}
+
+.apps-popup a:hover {
+    cursor: pointer;
+    background: #e8f0fe;
+}
+
+.apps-popup img {
+    width: 6vh;
+}
+
+.apps-popup:target {
+    visibility: visible;
+    opacity: 0.8;
+    transition-delay: 0s;
+}
+
+.apps-popup:target + .close-popup {
+    visibility: visible;
+}
+
+
+/* SETTINGS POP UP */
+
+.settings-popup {
+    position: absolute;
+    border-radius: 1%;
+    border: 1px solid #42433c;
+    bottom: 50px;
+    right: 20px;
+    background-color: rgba(255,255,255,1);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .1s, visibility 0s linear .1s;
+}
+
+.settings-popup a {
+    display: flex;
+    margin: 20px 15px;
+    font-size: small;
+    color: #6f6f6f;
+}
+
+.settings-popup:target {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.settings-popup:target + .close-popup {
+    visibility: visible;
+}
+
+.close-popup {
+    cursor: default;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    visibility: hidden;
+}
+
+/* BACKGROUND ANIMATION */
+.animation-area {
+    position: absolute;
+	background: linear-gradient(45deg, #00c3ff96, #ff008ca2);
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+}
+
+.circle-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.circle-area li {
+	position: absolute;
+	display: block;
+	width: 25px;
+	height: 25px;
+	background: rgba(220, 229, 255, 0.219);
+	animation: circle-animation 20s linear infinite;
+	bottom: -100px;
+}
+.circle-area li:nth-child(1) {
+	left: 5%;
+	width: 100px;
+	height: 100px;
+    border-radius: 100%;
+	animation-delay: 0s;
+    animation-duration: 10s;
+}
+.circle-area li:nth-child(2) {
+	left: 15%;
+	width: 30px;
+	height: 30px;
+    border-radius: 100%;
+	animation-delay: 1.5s;
+    animation-duration: 10s;
+}
+.circle-area li:nth-child(3) {
+	left: 25%;
+	width: 70px;
+	height: 70px;
+    border-radius: 100%;
+	animation-delay: 5s;
+    animation-duration: 15s;
+}
+.circle-area li:nth-child(4) {
+	left: 35%;
+	width: 150px;
+	height: 150px;
+    border-radius: 100%;
+	animation-delay: 1s;
+    animation-duration: 15s;
+}
+.circle-area li:nth-child(5) {
+	left: 45%;
+	width: 20px;
+	height: 20px;
+    border-radius: 100%;
+    animation-delay: 2s;
+    animation-duration: 5s;
+}
+.circle-area li:nth-child(6) {
+	left: 55%;
+	width: 110px;
+	height: 110px;
+    border-radius: 100%;
+	animation-delay: 3.5s;
+    animation-duration: 15s;
+}
+.circle-area li:nth-child(7) {
+	left: 65%;
+	width: 20px;
+	height: 20px;
+    border-radius: 100%;
+    animation-duration: 10s;
+}
+.circle-area li:nth-child(8) {
+	left: 75%;
+	width: 200px;
+	height: 200px;
+    border-radius: 100%;
+	animation-delay: 1s;
+    animation-duration: 15s;
+}
+.circle-area li:nth-child(9) {
+	left: 85%;
+	width: 110px;
+	height: 110px;
+    border-radius: 100%;
+	animation-delay: 3.5s;
+    animation-duration: 10s;
+}
+.circle-area li:nth-child(10) {
+	left: 95%;
+	width: 50px;
+	height: 50px;
+    border-radius: 100%;
+	animation-delay: 0s;
+    animation-duration: 5s;
+}
+@keyframes circle-animation {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-1000px);
+		opacity: 0;
+	}
+}
